@@ -15,13 +15,13 @@ class Email:
     
     @classmethod
     def create(cls,data):
-        query = 'INSERT INTO emails (email) VALUES (%(email)s;'
+        query = 'INSERT INTO emails (email) VALUES (%(email)s);'
         return connectToMySQL(cls.db).query_db(query,data)
     
     @classmethod
     def get_all_emails(cls):
         query = 'SELECT * FROM emails;'
-        results = connectToMySQL(cls.db).query_db(query,data)
+        results = connectToMySQL(cls.db).query_db(query)
         emails = []
         for row in results:
             emails.append(cls(row))
